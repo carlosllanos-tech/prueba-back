@@ -1,10 +1,21 @@
 const jwt = require('jsonwebtoken');
 const { request, response } = require('express');
+const { validationResult } = require('express-validator');
 const UsuarioModel = require('../models/usuario.model');
 
 class AuthController {
     static async login(req = request, res = response) {
         try {
+
+            const errors = validationResult(req);
+            if(!errors.isEmpty()) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Errores de validación',
+                    errors: errors.array()
+                });
+            }
+
             const { email, password } = req.body;
 
             const usuario = await UsuarioModel.findByEmail(email);
