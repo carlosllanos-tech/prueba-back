@@ -34,11 +34,13 @@ const authRoutes = require('./routes/auth.routes');
 const usuariosRoutes = require('./routes/usuarios.routes');
 const torneosRoutes = require('./routes/torneos.routes');
 const equiposRoutes = require('./routes/equipos.routes');
+const jugadoresRoutes = require('./routes/jugadores.routes');
 
 //Usar ruta
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/usuarios', usuariosRoutes);
 app.use('/api/v1/torneos', torneosRoutes);
 app.use('/api/v1/equipos', equiposRoutes);
+app.use('/api/v1/jugadores', jugadoresRoutes);
 
 module.exports = app;
