@@ -30,4 +30,81 @@ router.get(
     ReportesController.equiposPorTorneoExcel
 );
 
+// PDF
+router.get(
+    '/jugadores/equipo/:equipoId/pdf',
+    [
+        param('equipoId')
+            .isInt({ min: 1 }).withMessage('El ID del equipo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.jugadoresPorEquipoPDF
+);
+
+// Excel
+router.get(
+    '/jugadores/equipo/:equipoId/excel',
+    [
+        param('equipoId')
+            .isInt({ min: 1 }).withMessage('El ID del equipo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.jugadoresPorEquipoExcel
+);
+
+// PDF
+router.get(
+    '/fixture/torneo/:torneoId/pdf',
+    [
+        param('torneoId')
+            .isInt({ min: 1 }).withMessage('El ID del torneo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.fixturePDF
+);
+
+// Excel
+router.get(
+    '/fixture/torneo/:torneoId/excel',
+    [
+        param('torneoId')
+            .isInt({ min: 1 }).withMessage('El ID del torneo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.fixtureExcel
+);
+
+// JSON (endpoint para consumir en frontend)
+router.get(
+    '/tabla-posiciones/torneo/:torneoId',
+    [
+        param('torneoId')
+            .isInt({ min: 1 }).withMessage('El ID del torneo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.obtenerTablaPosiciones
+);
+
+// PDF
+router.get(
+    '/tabla-posiciones/torneo/:torneoId/pdf',
+    [
+        param('torneoId')
+            .isInt({ min: 1 }).withMessage('El ID del torneo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.tablaPosicionesPDF
+);
+
+// Excel
+router.get(
+    '/tabla-posiciones/torneo/:torneoId/excel',
+    [
+        param('torneoId')
+            .isInt({ min: 1 }).withMessage('El ID del torneo debe ser un número positivo')
+            .toInt()
+    ],
+    ReportesController.tablaPosicionesExcel
+);
+
 module.exports = router;

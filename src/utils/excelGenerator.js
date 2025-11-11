@@ -1,4 +1,5 @@
 const ExcelJS = require('exceljs');
+const PDFGenerator = require('./pdfGenerator');
 
 class ExcelGenerator {
 
@@ -153,7 +154,7 @@ class ExcelGenerator {
             // Datos de jugadores
             jugadores.forEach((jugador) => {
                 const edad = jugador.fecha_nacimiento
-                    ? this.calcularEdad(jugador.fecha_nacimiento)
+                    ? PDFGenerator.calcularEdad(jugador.fecha_nacimiento)
                     : 'N/A';
 
                 const row = worksheet.addRow([
